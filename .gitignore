@@ -1,0 +1,10 @@
+### Ignored Files ###
+
+# Python cache files
+__pycache__/
+
+# Virtual environment
+.venv/
+
+# Dotenv
+.env
