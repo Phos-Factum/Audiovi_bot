@@ -1,3 +1,4 @@
-> /help - shows all these commands
-> /menu - displays a menu keyboard
-> /bye  - command to turn bot off
+- /start - start bot to work
+- /help - shows all these commands
+- /menu - displays a menu keyboard
+- /bye  - command to turn bot off

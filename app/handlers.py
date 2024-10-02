@@ -17,14 +17,44 @@ async def cmd_start(message: Message):
                          reply_markup=kboard.menu)
 
 
+@router.message(Command("menu"))
+async def cmd_menu(message: Message):
+    await message.answer(text="Choose menu item:", reply_markup=kboard.menu)
+
+
+@router.message(Command("more"))
+async def cmd_more(message: Message):
+    await message.answer(text="- You can find here an info about us and \
+contacts -", reply_markup=kboard.more)
+
+
 @router.message(Command("help"))
 async def cmd_help(message: Message):
     with open("misc/help_cmds.md", "r", encoding="UTF-8") as file:
-        help_list - file.read()
-    await message.answer(help_list)
+        help_text = file.read()
+    await message.answer(help_text)
+
+
+@router.message(F.text == "Help")
+async def help(message: Message):
+    with open("misc/help_cmds.md", "r", encoding="UTF-8") as file:
+        help_text = file.read()
+    await message.answer(help_text)
+
+
+@router.message(Command("bye"))
+async def cmd_bye(message: Message):
+    await message.answer("Thanks for your requests! I will wait for you soon.\
+  \nType /start command to use bot.", reply_markup=ReplyKeyboardRemove())
 
 
 # Filters
+
+
+@router.message(F.text == "More")
+async def f_text_more(message: Message):
+    await message.answer(text="- You can find here an info about us and \
+contacts -", reply_markup=kboard.more)
 
 
 @router.message(F.text == "Bye!")
